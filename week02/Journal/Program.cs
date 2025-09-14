@@ -1,3 +1,5 @@
+// I improved the file saving and loading to be compatible with csv files that can be opened in excel
+
 using System;
 using System.Linq;
 
@@ -23,6 +25,7 @@ class Program
             """);
             Console.Write(" >> ");
             menuInput = Console.ReadLine();
+            Console.WriteLine();
 
             if (menuInput == "1")
             {
@@ -31,7 +34,7 @@ class Program
                 PromptGenerator promptGen = new PromptGenerator();
                 string randPrompt = promptGen.GetRandomPrompt();
 
-                Console.WriteLine($"\n{string.Concat(Enumerable.Repeat('*', 100))}\n{dateText}\n{randPrompt}");
+                Console.WriteLine($"{string.Concat(Enumerable.Repeat('*', 100))}\n{dateText}\n{randPrompt}");
                 Console.Write("\n > ");
                 string responseInput = Console.ReadLine();
 
@@ -60,7 +63,7 @@ class Program
             }
             else if (menuInput == "5")
             {
-                continue;
+                Console.WriteLine("Thank You!");
             }
             else
             {

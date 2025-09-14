@@ -1,4 +1,5 @@
 using System.IO;
+using Microsoft.VisualBasic.FileIO;
 
 public class Journal
 {
@@ -25,7 +26,7 @@ public class Journal
         {
             foreach (Entry e in _entries)
             {
-                outputFile.WriteLine($"{e._dateText}~|~{e._promptText}~|~{e._responseText}");
+                outputFile.WriteLine($"{e._dateText},\"{e._promptText}\",\"{e._responseText}\"");
             }
         }
     }
@@ -37,9 +38,13 @@ public class Journal
 
         string[] lines = System.IO.File.ReadAllLines(filename);
 
+        TextFieldParser parser = new TextFieldParser(filename);
+        parser.HasFieldsEnclosedInQuotes = true;
+        parser.SetDelimiters(",");
+
         foreach (string line in lines)
         {
-            string[] parts = line.Split("~|~");
+            string[] parts = parser.ReadFields();
 
             Entry newEntry = new Entry();
             newEntry._dateText = parts[0];
