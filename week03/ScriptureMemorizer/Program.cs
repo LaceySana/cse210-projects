@@ -1,4 +1,4 @@
-// Exceeded Requirements: Only words that are not already hidden can be hidden.
+// Exceeded Requirements: Only words that are not already hidden can be hidden. Also, any and all special characters are still shown.
 
 using System;
 
