@@ -1,3 +1,5 @@
+// Exceeded Requirements: Only words that are not already hidden can be hidden.
+
 using System;
 
 class Program
