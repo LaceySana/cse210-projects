@@ -1,0 +1,93 @@
+// YOUTUBE VIDEO PROGRAM
+*********************************
+    Video
+______________________________
+_title: string
+_author: string
+_length: TimeSpan
+_comments: List<Comments>
+______________________________
+Video(title: string, author: string, length: TimeSpan, comments: List<Comment>)
+
+NumberOfComments(): int
+DisplayVideoInfo(): void
+
+**********************************
+    Comment
+______________________________
+_author: string
+_text: string
+______________________________
+Comment(author: string, text: string)
+
+DisplayComment(): void
+
+**********************************
+**********************************
+Description:
+
+DisplayVideoInfo() in the Video class will display the _title, _author, and _length, then iterate through the list of Comments calling
+on the DisplayComment() method from the Comment class.
+
+**********************************
+**********************************
+**********************************
+
+// ONLINE ORDERING PROGRAM
+**********************************
+    Product
+______________________________
+_productName: string
+_productID: string
+_price: double
+_quantity: int
+______________________________
+Product(productName: string, productID: string, price: double, quantity: int)
+
+GetTotalPrice(): double
+DisplayProductInfo():void
+
+**********************************
+    Customer
+______________________________
+_name: string
+_address: Address
+______________________________
+Customer(name: string, address: Address)
+
+DoesLiveInUSA(): bool
+DisplayCustomerInfo(): void
+
+**********************************
+    Address
+______________________________
+_streetAddress: string
+_city: string
+_state: string
+_country: string
+______________________________
+Address(streetAddress: string, city: string, state: string, country: string)
+
+IsInUSA(): bool
+DisplayAddress(): string
+
+**********************************
+    Order
+______________________________
+_customer: Customer
+_products: List<Product>
+______________________________
+Order(customer: Customer, products: List<Product>)
+
+DisplayOrder(): void
+GetShippingCost(): double
+CalculateTotalCost(): double
+GetPackingLabel(): string
+GetShippingLabel(): string
+
+**********************************
+**********************************
+Description:
+
+Order class ties a Customer(including their name and address) to a list of Products(which includes all product information and the quantity being ordered).
+Its DisplayOrder method will call upon the 'Display...' methods from each class to display complete order details.
