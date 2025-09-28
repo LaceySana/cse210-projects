@@ -15,10 +15,18 @@ public class Address
 
     public bool IsInUsa()
     {
-        if (_country === "USA") {
-            return True;
+        if (_country == "USA")
+        {
+            return true;
         }
-        return False;
+        return false;
+    }
+
+    public string FormatAddress()
+    {
+        string addressString = $"{_streetAddress} \n{_city}, {_state} \n{_country}";
+
+        return addressString;
     }
 
 }
