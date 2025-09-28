@@ -15,7 +15,10 @@ public class Address
 
     public bool IsInUsa()
     {
-        return true;
+        if (_country === "USA") {
+            return True;
+        }
+        return False;
     }
 
 }
