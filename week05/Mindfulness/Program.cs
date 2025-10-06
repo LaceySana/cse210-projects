@@ -8,5 +8,8 @@ class Program
 
         string menu = "";
         Console.WriteLine(menu);
+
+        BreathingActivity activity1 = new BreathingActivity();
+        activity1.Run();
     }
 }

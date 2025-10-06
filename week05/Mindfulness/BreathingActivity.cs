@@ -1,15 +1,26 @@
 // Breathing Activity class : inherit from Activity
+public class BreathingActivity : Activity
+{
+    // CONSTRUCTORS
 
+    public BreathingActivity() : base()
+    {
+        SetActivityName("Breathing Activity");
+        SetActivityDescription("Calm your mind by breathing at a slow, steady pace.");
+    }
 
-// ATTRIBUTES
-/*? Do I create defined attributes for the sub classes or no attributes and just define them in a constructor?*/
+    // METHODS
 
+    public void Run()
+    {
+        DisplayStartingMessage();
 
-// CONSTRUCTORS
+        DisplayCountDown(3);
+        DisplaySpinner(GetActivityDuration());
+        
+        DisplayEndingMessage();
+    }
 
-// BreathingActivity() : base()
+    // Override
 
-
-// METHODS
-
-// TakeBreath(): void
+}
