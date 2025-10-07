@@ -6,7 +6,7 @@ public class Activity
     private string _activityName;
     private string _activityDescription;
     private int _activityDuration = 0;
-    protected int _completions = 0;
+    private int _completions = 0;
     
 
 
