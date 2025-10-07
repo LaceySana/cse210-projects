@@ -3,10 +3,10 @@ public class BreathingActivity : Activity
 {
     // CONSTRUCTORS
 
-    public BreathingActivity() : base()
+    public BreathingActivity()
     {
         SetActivityName("Breathing Activity");
-        SetActivityDescription("Calm your mind by breathing at a slow, steady pace.");
+        SetActivityDescription("This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.");
     }
 
     // METHODS
@@ -15,12 +15,16 @@ public class BreathingActivity : Activity
     {
         DisplayStartingMessage();
 
-        DisplayCountDown(3);
-        DisplaySpinner(GetActivityDuration());
-        
+        RunForDuration(Breath);
+
         DisplayEndingMessage();
     }
 
-    // Override
-
+    private void Breath()
+    {
+        Console.Write("\n\nBreath in... ");
+        DisplayCountDown(4);
+        Console.Write("\nBreath out... ");
+        DisplayCountDown(6);
+    }
 }

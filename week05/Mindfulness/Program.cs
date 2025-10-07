@@ -1,3 +1,5 @@
+// Added a tracker for number of completions for each activity.
+
 using System;
 
 class Program
@@ -6,10 +8,8 @@ class Program
     {
         Console.WriteLine("Hello World! This is the Mindfulness Project.");
 
-        string menu = "";
-        Console.WriteLine(menu);
+        Menu menu = new Menu();
+        menu.RunApplication();
 
-        BreathingActivity activity1 = new BreathingActivity();
-        activity1.Run();
     }
 }

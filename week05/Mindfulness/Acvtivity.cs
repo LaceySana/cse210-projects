@@ -3,14 +3,16 @@ public class Activity
 {
     // ATTRIBUTES
 
-    string _activityName;
-    string _activityDescription;
-    int _activityDuration = 0;
+    private string _activityName;
+    private string _activityDescription;
+    private int _activityDuration = 0;
+    protected int _completions = 0;
+    
 
 
     // CONSTRUCTORS
 
-    public Activity() {}
+    public Activity() { }
 
 
     // METHODS
@@ -45,13 +47,16 @@ public class Activity
 
     public void DisplayStartingMessage()
     {
-        Console.WriteLine($"{_activityName} \n {_activityDescription}");
+        Console.WriteLine($"| {_activityName} | \n\n{_activityDescription}\n");
         GetDurationFromUser();
+        Console.Write("Get ready...");
+        DisplaySpinner(5);
     }
 
     public void DisplayEndingMessage()
     {
-        Console.WriteLine($"Great Job! \nYou have completed {_activityDuration} seconds of {_activityName}!");
+        _completions++;
+        Console.WriteLine($"\n\nGreat Job! \nYou have completed {_activityDuration} seconds of {_activityName}. \nYou have completed the {_activityName} {_completions} times in this session.");
     }
 
     public void DisplayCountDown(int seconds)
@@ -74,7 +79,7 @@ public class Activity
         while (DateTime.Now < endTime)
         {
             Console.Write(spinnerStrings[i]);
-            Thread.Sleep(250);
+            Thread.Sleep(500);
             Console.Write("\b \b");
             i++;
 
@@ -84,5 +89,17 @@ public class Activity
             }
         }
     }
+
+    public void RunForDuration(Action action)
+    {
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(_activityDuration);
+
+        while (DateTime.Now < endTime)
+        {
+            action();
+        }
+    }
+
 
 }
