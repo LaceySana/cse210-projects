@@ -3,7 +3,7 @@ public abstract class Goal
     protected string _name;
     protected string _description;
     protected int _points;
-    protected string _delim = "||";
+    protected static string _delim = "||";
 
     public Goal(string name, string description, int points)
     {
@@ -22,7 +22,7 @@ public abstract class Goal
         return _points;
     }
 
-    public string GetDelimiter()
+    public static string GetDelimiter()
     {
         return _delim;
     }
@@ -39,6 +39,10 @@ public abstract class Goal
         if (IsComplete())
         {
             mark = "X";
+        }
+        else if (GetType() == typeof(EternalGoal))
+        {
+            mark = "∞";
         }
         return $"[{mark}] {_name} ({_description})";
     }

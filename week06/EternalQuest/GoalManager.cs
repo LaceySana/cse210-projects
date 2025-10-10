@@ -1,3 +1,5 @@
+using System.IO;
+
 public class GoalManager
 {
     private List<Goal> _goals;
@@ -83,10 +85,11 @@ public class GoalManager
             Console.WriteLine($"{i}: {goal.GetStringDetails()}");
         }
     }
-    
+
     private void ListGoalTypes()
     {
         string goalTypesString = """
+        
         The types of goals are:
           1. Simple Goal
           2. Eternal Goal
@@ -138,14 +141,46 @@ public class GoalManager
 
     private void Save(string filename)
     {
-        // save score and all goals to text file
+        using (StreamWriter outputFile = new StreamWriter(filename))
+        {
+            outputFile.WriteLine(_score);
+            foreach (Goal goal in _goals)
+            {
+                outputFile.WriteLine(goal.GetRepresentationString());
+            }
+        }
     }
 
     private void Load(string filename)
     {
-        // load score and all goals from text file
+        string[] lines = File.ReadAllLines(filename);
+        int score = int.Parse(lines[0]);
+        _score = score;
+
+        foreach (string line in lines.Skip(1))
+        {
+            string[] parts = line.Split(Goal.GetDelimiter());
+
+            string goalType = parts[0];
+
+            if (goalType == "1" || goalType == "SimpleGoal")
+            {
+                SimpleGoal newSGoal = new SimpleGoal(parts[1], parts[2], int.Parse(parts[3]), parts[4]);
+                _goals.Add(newSGoal);
+            }
+            else if (goalType == "2" || goalType == "EternalGoal")
+            {
+                EternalGoal newEGoal = new EternalGoal(parts[1], parts[2], int.Parse(parts[3]));
+                _goals.Add(newEGoal);
+            }
+            else if (goalType == "3" || goalType == "ChecklistGoal")
+            {
+                ChecklistGoal newCGoal = new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[5]), int.Parse(parts[4]), int.Parse(parts[6]));
+                _goals.Add(newCGoal);
+            }
+        }
     }
-    
+
     private void Exit()
     {
         Environment.Exit(0);

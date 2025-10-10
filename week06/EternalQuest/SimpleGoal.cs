@@ -6,6 +6,11 @@ public class SimpleGoal : Goal
     {
         _isComplete = false;
     }
+    
+    public SimpleGoal(string name, string description, int points, string isComplete) : base(name, description, points)
+    {
+        _isComplete = bool.Parse(isComplete);
+    }
 
     public override void RecordEvent(GoalManager manager)
     {

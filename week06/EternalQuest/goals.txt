@@ -1,0 +1,5 @@
+925
+SimpleGoal||finish this assignment||finish goal manager assignment before work||100||True
+EternalGoal||pray||pray daily||50
+ChecklistGoal||play guitar||play guitar at least 10 minutes||50||3||500||1
+ChecklistGoal||read scriptures||study for 5 minutes||75||500||3||3
